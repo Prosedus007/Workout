@@ -1,0 +1,321 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #0A0A0F;
+  color: #F1F5F9;
+  min-height: 100vh;
+}
+
+.screen {
+  display: none;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px 16px 60px;
+  animation: fadeIn 0.25s ease;
+}
+.screen.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Choice screens --- */
+.hero {
+  text-align: center;
+  padding: 40px 10px 24px;
+}
+.kicker {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #6366F1;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+.hero h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+}
+.sub {
+  font-size: 13px;
+  color: #94A3B8;
+  margin: 0;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+@media (max-width: 460px) {
+  .choice-grid { grid-template-columns: 1fr; }
+}
+
+.choice-card {
+  background: #161625;
+  border: 1px solid #1E1E30;
+  border-radius: 16px;
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  color: #F1F5F9;
+  transition: all 0.2s ease;
+}
+.choice-card:hover {
+  border-color: #6366F1;
+  background: #1A1A2C;
+  transform: translateY(-2px);
+}
+.choice-emoji { font-size: 34px; margin-bottom: 10px; }
+.choice-title { font-size: 17px; font-weight: 800; margin-bottom: 4px; }
+.choice-desc { font-size: 12px; color: #64748B; }
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #94A3B8;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 14px 0 4px;
+}
+.back-btn:hover { color: #F1F5F9; }
+
+/* --- Plan screen --- */
+.plan-header { text-align: center; padding: 8px 8px 4px; }
+.plan-kicker {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+  color: #6366F1; text-transform: uppercase; margin: 0 0 6px;
+}
+.plan-header h1 { font-size: 24px; font-weight: 800; margin: 0 0 4px; letter-spacing: -0.5px; }
+.plan-sub { font-size: 13px; color: #94A3B8; margin: 0; }
+
+.day-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 18px 2px 4px;
+  scrollbar-width: none;
+}
+.day-tabs::-webkit-scrollbar { display: none; }
+
+.day-tab-btn {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 2px solid #222;
+  background: #18181f;
+  color: #888;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.day-tab-btn.active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+}
+
+.day-card {
+  background: #18181f;
+  border-radius: 16px;
+  border: 1px solid #222;
+  overflow: hidden;
+  margin-top: 14px;
+}
+
+.day-card-header {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 14%, transparent), color-mix(in srgb, var(--accent) 4%, transparent));
+  border-bottom: 1px solid #222;
+  padding: 20px 20px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.day-label {
+  font-size: 11px; letter-spacing: 3px; color: var(--accent);
+  text-transform: uppercase; margin: 0 0 4px;
+}
+.day-card-header h2 { font-size: 21px; font-weight: 800; margin: 0; }
+.day-tag { font-size: 12px; color: #888; margin: 4px 0 0; }
+
+.exercise-count {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.progress-wrap { padding: 14px 20px 0; }
+.progress-info {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: #94A3B8; margin-bottom: 6px; font-weight: 600;
+}
+#progress-pct { color: var(--accent); font-size: 16px; font-weight: 800; }
+.progress-bar-bg {
+  height: 6px; background: #0A0A0F; border-radius: 99px; overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%; width: 0%; background: var(--accent); border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+.warmup-box {
+  margin: 14px 20px 0;
+  background: #ffffff08;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 12px;
+  color: #aaa;
+}
+.warmup-box strong { color: #ddd; }
+
+.exercise-list { padding: 8px 16px 4px; }
+
+.exercise-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 13px 0;
+  border-bottom: 1px solid #222;
+}
+.exercise-row:last-child { border-bottom: none; }
+
+.exercise-top { display: flex; align-items: flex-start; gap: 12px; }
+
+.exercise-num {
+  width: 28px; height: 28px; border-radius: 7px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+  font-weight: 800; font-size: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+
+.exercise-name { font-weight: 700; font-size: 14.5px; margin-bottom: 5px; }
+
+.exercise-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 5px; }
+.meta-pill {
+  background: #222; border-radius: 5px; padding: 2px 8px;
+  font-size: 11px; color: #ccc;
+}
+.meta-pill.rest { color: #888; }
+.meta-pill.muscle {
+  font-weight: 700;
+}
+
+.exercise-tip { font-size: 11px; color: #666; font-style: italic; }
+
+.set-trackers { display: flex; gap: 7px; flex-wrap: wrap; padding-left: 40px; }
+.set-btn {
+  width: 36px; height: 36px; border-radius: 9px;
+  border: 2px solid #2A2A3E;
+  background: transparent;
+  color: #475569;
+  font-weight: 800;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.set-btn.done {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+}
+
+.cardio-box {
+  margin: 4px 16px 16px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.cardio-label {
+  font-size: 11px; color: var(--accent); font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px;
+}
+.cardio-text { font-size: 13px; color: #ddd; }
+
+.info-card {
+  margin-top: 16px;
+  background: #18181f;
+  border-radius: 14px;
+  border: 1px solid #222;
+  padding: 16px;
+}
+.info-title {
+  font-size: 11px; letter-spacing: 3px; color: #555;
+  text-transform: uppercase; margin: 0 0 12px;
+}
+
+.info-card-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #F1F5F9;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0;
+}
+#guide-card { padding: 14px 16px; }
+.guide-body { padding-top: 14px; display: none; }
+.guide-body.open { display: block; }
+.guide-row {
+  background: #111;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border: 1px solid #1e1e1e;
+}
+.guide-row:last-child { margin-bottom: 0; }
+.guide-level { font-weight: 700; font-size: 13px; margin-bottom: 8px; }
+.guide-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.guide-tag {
+  background: #222; border-radius: 5px; padding: 3px 10px;
+  font-size: 11px; color: #ccc;
+}
+
+.schedule-row {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 6px;
+}
+.schedule-row:last-child { margin-bottom: 0; }
+.schedule-day { width: 36px; font-size: 12px; color: #555; font-weight: 600; }
+.schedule-bar {
+  flex: 1; height: 28px; border-radius: 6px;
+  display: flex; align-items: center; padding: 0 10px;
+  font-size: 11px; font-weight: 600;
+  background: #111; border: 1px solid #1a1a1a; color: #333;
+}
+
+.tip-row {
+  font-size: 13px; color: #aaa; padding: 6px 0;
+  border-bottom: 1px solid #1a1a1a; line-height: 1.5;
+}
+.tip-row:last-child { border-bottom: none; }
+.tip-row-card {
+  background: #161625; border-radius: 14px; padding: 14px;
+  border: 1px solid #1E1E30;
+}
+.tip-icon { font-size: 20px; margin-bottom: 6px; }
+.tip-title-text { margin: 0 0 4px; font-weight: 700; font-size: 13px; }
+.tip-desc-text { margin: 0; font-size: 12px; color: #64748B; line-height: 1.5; }
+.tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 420px) {
+  .tips-grid { grid-template-columns: 1fr; }
+}

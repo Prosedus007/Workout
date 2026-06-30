@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Workout Plan</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SCREEN 1: Gym vs Calisthenics -->
+  <section id="screen-main" class="screen active">
+    <div class="hero">
+      <p class="kicker">Pick your style</p>
+      <h1>What's today's mode?</h1>
+      <p class="sub">Choose how you want to train this week.</p>
+    </div>
+    <div class="choice-grid">
+      <button class="choice-card" data-choice="gym">
+        <div class="choice-emoji">🏋️</div>
+        <div class="choice-title">Gym</div>
+        <div class="choice-desc">5-day machine &amp; free-weight split</div>
+      </button>
+      <button class="choice-card" data-choice="calisthenics">
+        <div class="choice-emoji">🤸</div>
+        <div class="choice-title">Calisthenics</div>
+        <div class="choice-desc">Bodyweight-based training</div>
+      </button>
+    </div>
+  </section>
+
+  <!-- SCREEN 2: Dumbbell or No Dumbbell (only for calisthenics) -->
+  <section id="screen-cali" class="screen">
+    <button class="back-btn" data-back="screen-main">← Back</button>
+    <div class="hero">
+      <p class="kicker">Calisthenics</p>
+      <h1>Got dumbbells?</h1>
+      <p class="sub">We'll load the right plan for your setup.</p>
+    </div>
+    <div class="choice-grid">
+      <button class="choice-card" data-choice="cali-dumbbell">
+        <div class="choice-emoji">🏋️‍♂️</div>
+        <div class="choice-title">With Dumbbells</div>
+        <div class="choice-desc">5-day calisthenics + dumbbells</div>
+      </button>
+      <button class="choice-card" data-choice="cali-nodumbbell">
+        <div class="choice-emoji">🙌</div>
+        <div class="choice-title">No Equipment</div>
+        <div class="choice-desc">6-day pure bodyweight plan</div>
+      </button>
+    </div>
+  </section>
+
+  <!-- SCREEN 3: Plan view (shared by all 3 plans) -->
+  <section id="screen-plan" class="screen">
+    <button class="back-btn" id="plan-back-btn">← Back</button>
+
+    <div class="plan-header">
+      <p class="plan-kicker" id="plan-kicker"></p>
+      <h1 id="plan-title"></h1>
+      <p class="plan-sub" id="plan-sub"></p>
+    </div>
+
+    <div class="day-tabs" id="day-tabs"></div>
+
+    <div class="day-card" id="day-card">
+      <div class="day-card-header" id="day-card-header">
+        <div>
+          <p class="day-label" id="day-label"></p>
+          <h2 id="day-focus"></h2>
+          <p class="day-tag" id="day-tag"></p>
+        </div>
+        <div class="exercise-count" id="exercise-count"></div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-info">
+          <span id="progress-pct">0%</span>
+          <span id="progress-sets">0/0 sets</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <div class="warmup-box" id="warmup-box"></div>
+
+      <div class="exercise-list" id="exercise-list"></div>
+
+      <div class="cardio-box" id="cardio-box"></div>
+    </div>
+
+    <div class="info-card" id="guide-card" style="display:none;">
+      <button class="info-card-toggle" id="guide-toggle">
+        <span>🏋️ Dumbbell Weight Guide</span>
+        <span id="guide-arrow">▼</span>
+      </button>
+      <div class="guide-body" id="guide-body"></div>
+    </div>
+
+    <div class="info-card">
+      <p class="info-title">Weekly Schedule</p>
+      <div id="schedule-list"></div>
+    </div>
+
+    <div class="info-card">
+      <p class="info-title">Key Tips</p>
+      <div id="tips-list"></div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
